@@ -1,10 +1,11 @@
 const asynchandler =(requesthandler)=>{
-    (req,res,next)=>{
+    return (req,res,next)=>{
         Promise.resolve(requesthandler(req,res,next)).catch((err)=>next(err))
     }
 }
 
 export {asynchandler}
+//ek toh ye import export ka dhyan rakhna {} kar rahe toh waise hi import aur default toh waise
 
 // const asynchandler=(fn)=>async(req,res,next)=>{
 //     try{
