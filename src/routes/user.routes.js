@@ -29,6 +29,9 @@ router.route("/register").post(
     registerUser)
 
 router.route("/login").post(loginUser) 
+router.route("/test").get((req, res) => {
+    res.json({ message: "User router is working" })
+})
 //secured routes
 router.route("/logout").post(verifyJwt,logoutUser)
 router.route("/refresh-token").post(refreshAccessToken)
@@ -37,7 +40,7 @@ router.route("/current-user").get(verifyJwt,getCurrentUser)
 router.route("/update-accout").patch(verifyJwt,updateAccoutDetails)
 
 router.route("/avatar").patch(verifyJwt,upload.single("avatar"),updateUserAvatar)
-router.route("/cover-image").patch(verifyJwt,upload.single("/coverImage"),updateUserCoverImage)
+router.route("/cover-image").patch(verifyJwt,upload.single("coverImage"),updateUserCoverImage)
 router.route("/c/username").get(verifyJwt,getUserChannelProfile)
 router.route("/history").get(verifyJwt,getWatchHistory)
 
